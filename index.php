@@ -41,7 +41,14 @@
 
         let link  = document.querySelector('#texto');
         let datos =  new FormData();
-        
+
+        datos.append('link',link);
+
+        let peticion = {
+          method:'POST',
+          body:datos
+        }
+
       })
     </script>
   </body>
