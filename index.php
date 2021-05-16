@@ -48,6 +48,12 @@
           method:'POST',
           body:datos
         }
+        
+        fetch('php/generar-qr.php',peticion)
+        .then(respuesta => respuesta.json())
+        .then(respuesta => {
+          console.log(respuesta);
+        })
 
       })
     </script>
