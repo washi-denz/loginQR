@@ -15,18 +15,25 @@ $link = $_POST['link'] ?? '';
 $result = Builder::create()
     ->writer(new PngWriter())
     ->writerOptions([])
-    ->data('Custom QR code contents')
+    ->data($link)
     ->encoding(new Encoding('UTF-8'))
     ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
     ->size(300)
     ->margin(10)
     ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
     //->logoPath(__DIR__.'/assets/symfony.png')
-    ->labelText('This is the label')
+    ->labelText('Mi qr')
     ->labelFont(new NotoSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
     ->build();
 
     header("Content-Type: image/png");
     header('Content-Disposition: attachment;filename="qr.png"');
-    header('Cache-Control: max-age=0')
+    header('Cache-Control: max-age=0');
+
+    $respuesta = [
+        'op'   => 'ok',
+        'file' =>  "data:imagen/png;base64,".base64_encode($result->getString())
+    ];
+
+    echo json_encode($respuesta);
