@@ -26,3 +26,7 @@ $result = Builder::create()
     ->labelFont(new NotoSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
     ->build();
+
+    header("Content-Type: image/png");
+    header('Content-Disposition: attachment;filename="qr.png"');
+    header('Cache-Control: max-age=0')
