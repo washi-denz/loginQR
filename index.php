@@ -52,7 +52,11 @@
         fetch('php/generar-qr.php',peticion)
         .then(respuesta => respuesta.json())
         .then(respuesta => {
-          console.log(respuesta);
+          //console.log(respuesta);
+          let  a = document.createElement('a');
+          a.href = respuesta.file;
+          a.dowload = "mi_qr.png";
+          a.click();
         })
 
       })
