@@ -55,8 +55,10 @@
           //console.log(respuesta);
           let  a = document.createElement('a');
           a.href = respuesta.file;
-          a.dowload = "mi_qr.png";
+          a.download = "mi_qr.png";
           a.click();
+        }).catch(error=>{
+          log
         })
 
       })
